@@ -52,8 +52,12 @@ describe("Given that I am a user on login page", () => {
     test("Then I should be identified as an Employee in app", () => {
       document.body.innerHTML = LoginUI();
       const inputData = {
+        //next line added - trying to fix navigation to bills page
+        type: "Employee",
         email: "johndoe@email.com",
         password: "azerty",
+        //next line added - trying to fix navigation to bills page
+        status: "connected",
       };
 
       const inputEmailUser = screen.getByTestId("employee-email-input");
