@@ -9,6 +9,8 @@ import { ROUTES_PATH} from "../constants/routes.js";
 import {localStorageMock} from "../__mocks__/localStorage.js";
 import mockStore from "../__mocks__/store.js";
 import router from "../app/Router.js";
+import Bills from "../containers/Bills.js";
+import store from "../app/Store.js";
 
 jest.mock("../app/store", () => mockStore)
 
@@ -36,6 +38,23 @@ describe("Given I am connected as an employee", () => {
       const antiChrono = (a, b) => ((a < b) ? 1 : -1)
       const datesSorted = [...dates].sort(antiChrono)
       expect(dates).toEqual(datesSorted)
+    })
+    test("Then I should be able to click on the icon eye", async () => {
+      //initialising "onNavigate" to a dumb value (required argument for BillsUI instanciation but not used here)
+      let onNavigate = "none"
+      //mocking function (thanks stackOverflow 🙏)
+      $.fn.modal = jest.fn();
+
+      //generation of the bills page to get a mocked eye icon
+      document.body.innerHTML = BillsUI({data: bills})
+      const iconEye = screen.getAllByTestId('icon-eye')
+      console.log(iconEye[0].innerHTML)
+
+      //instantiating containers/Bills.js
+      const billsClass = new Bills({ document, onNavigate, store, localStorage });
+
+      //verifying return value inserted into handleClickIcon function
+      expect(billsClass.handleClickIconEye(iconEye[0])).toBe(1)
     })
   })
 })
