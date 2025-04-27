@@ -131,18 +131,30 @@ export default class {
   }
 
   handleShowTickets(e, bills, index) {
+    for (let i = 1; i < 4; i++) {
+      if (i !== index){
+        $(`#arrow-icon${i}`).css({ transform: 'rotate(90deg)'})
+        $(`#status-bills-container${i}`)
+          .html("")
+      }
+    }
+
+    document.querySelector(".dashboard-right-container").innerHTML = `<h3> Validations </h3>
+          <div><div id="big-billed-icon" data-testid="big-billed-icon"> ${BigBilledIcon} </div></div>`;
+
     if (this.counter === undefined || this.index !== index) this.counter = 0
     if (this.index === undefined || this.index !== index) this.index = index
-    if (this.counter % 2 === 0) {
+
+    this.counter++;
+
+    if (this.counter % 2 === 1) {
       $(`#arrow-icon${this.index}`).css({ transform: 'rotate(0deg)'})
       $(`#status-bills-container${this.index}`)
         .html(cards(filteredBills(bills, getStatus(this.index))))
-      this.counter ++
     } else {
       $(`#arrow-icon${this.index}`).css({ transform: 'rotate(90deg)'})
       $(`#status-bills-container${this.index}`)
         .html("")
-      this.counter ++
     }
 
     bills.forEach(bill => {
