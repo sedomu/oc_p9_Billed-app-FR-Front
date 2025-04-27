@@ -232,3 +232,95 @@ describe("Given that I am a user on login page", () => {
     });
   });
 });
+
+// Test for createUser method
+describe("Given I am a user on login page", () => {
+  describe("When I call createUser method", () => {
+    test("Then it should create a user and call login method if store exists", async () => {
+      // Set up the DOM
+      document.body.innerHTML = LoginUI();
+
+      // Mock localStorage
+      Object.defineProperty(window, "localStorage", {
+        value: {
+          getItem: jest.fn(() => null),
+          setItem: jest.fn(() => null),
+        },
+        writable: true,
+      });
+
+      // Mock navigation
+      const onNavigate = jest.fn();
+      let PREVIOUS_LOCATION = "";
+
+      // Create a mock store with users().create() method
+      const mockStore = {
+        users: jest.fn().mockReturnValue({
+          create: jest.fn().mockResolvedValue({})
+        }),
+        login: jest.fn().mockResolvedValue({ jwt: 'a-jwt-token' })
+      };
+
+      // Create a Login instance with the mock store
+      const login = new Login({
+        document,
+        localStorage: window.localStorage,
+        onNavigate,
+        PREVIOUS_LOCATION,
+        store: mockStore
+      });
+
+      // Mock the login method
+      login.login = jest.fn().mockResolvedValue({});
+
+      // Test user data
+      const user = {
+        type: "Employee",
+        email: "test@example.com",
+        password: "password123"
+      };
+
+      // Call the createUser method
+      await login.createUser(user);
+
+      // Verify that store.users().create() was called with the correct data
+      expect(mockStore.users).toHaveBeenCalled();
+      expect(mockStore.users().create).toHaveBeenCalledWith({
+        data: JSON.stringify({
+          type: user.type,
+          name: user.email.split('@')[0],
+          email: user.email,
+          password: user.password,
+        })
+      });
+
+      // Verify that login method was called with the user
+      expect(login.login).toHaveBeenCalledWith(user);
+    });
+
+    test("Then it should return null if store doesn't exist", () => {
+      // Set up the DOM
+      document.body.innerHTML = LoginUI();
+
+      // Create a Login instance without a store
+      const login = new Login({
+        document,
+        localStorage: window.localStorage,
+        onNavigate: jest.fn(),
+        PREVIOUS_LOCATION: "",
+        store: null
+      });
+
+      // Test user data
+      const user = {
+        type: "Employee",
+        email: "test@example.com",
+        password: "password123"
+      };
+
+      // Call the createUser method and check the result
+      const result = login.createUser(user);
+      expect(result).toBeNull();
+    });
+  });
+});
