@@ -48,13 +48,12 @@ describe("Given I am connected as an employee", () => {
       //generation of the bills page to get a mocked eye icon
       document.body.innerHTML = BillsUI({data: bills})
       const iconEye = screen.getAllByTestId('icon-eye')
-      console.log(iconEye[0].innerHTML)
 
       //instantiating containers/Bills.js
       const billsClass = new Bills({ document, onNavigate, store, localStorage });
 
       //verifying return value inserted into handleClickIcon function
-      expect(billsClass.handleClickIconEye(iconEye[0])).toBe(1)
+      expect(billsClass.handleClickIconEye(iconEye[0])).toBe(iconEye[0].getAttribute("data-bill-url"))
     })
   })
 })
