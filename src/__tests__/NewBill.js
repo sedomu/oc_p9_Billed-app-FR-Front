@@ -10,7 +10,7 @@ import newBillData from "../__mocks__/newBillData.js";
 import mockStore from "../__mocks__/store.js";
 import {ROUTES} from "../constants/routes.js";
 
-jest.mock("../app/store.js", () => mockStore)
+jest.mock("../app/Store", () => mockStore)
 
 describe("Given I am connected as an employee", () => {
   describe("When I am on NewBill Page", () => {
