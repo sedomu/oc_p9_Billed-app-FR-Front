@@ -12,7 +12,7 @@ import router from "../app/Router.js";
 import Bills from "../containers/Bills.js";
 import store from "../app/Store";
 
-jest.mock("../app/store", () => mockStore)
+jest.mock("../app/Store", () => mockStore)
 
 describe("Given I am connected as an employee", () => {
   describe("When I am on Bills Page", () => {
