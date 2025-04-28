@@ -7,10 +7,10 @@ import BillsUI from "../views/BillsUI.js"
 import { bills } from "../fixtures/bills.js"
 import { ROUTES_PATH} from "../constants/routes.js";
 import {localStorageMock} from "../__mocks__/localStorage.js";
-import mockStore from "../__mocks__/store.js";
+import mockStore from "../__mocks__/store";
 import router from "../app/Router.js";
 import Bills from "../containers/Bills.js";
-import store from "../app/Store.js";
+import store from "../app/Store";
 
 jest.mock("../app/store", () => mockStore)
 
