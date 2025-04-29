@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1745932650206" clover="3.2.0">
-  <project timestamp="1745932650206" name="All files">
-    <metrics statements="233" coveredstatements="218" conditionals="100" coveredconditionals="84" methods="69" coveredmethods="56" elements="402" coveredelements="358" complexity="0" loc="233" ncloc="233" packages="3" files="16" classes="16"/>
-    <package name="constants">
-      <metrics statements="9" coveredstatements="9" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
-      <file name="routes.js" path="/Users/sedomu/Documents/formation OC dev frontend/projet 9/oc_p9_Billed-app-FR-Front/src/constants/routes.js">
-        <metrics statements="9" coveredstatements="9" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
-        <line num="6" count="6" type="stmt"/>
-        <line num="13" count="6" type="stmt"/>
-        <line num="14" count="38" type="cond" truecount="5" falsecount="0"/>
-        <line num="16" count="10" type="stmt"/>
-        <line num="18" count="9" type="stmt"/>
-        <line num="19" count="9" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="23" count="17" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
-      </file>
-      <file name="usersTest.js" path="/Users/sedomu/Documents/formation OC dev frontend/projet 9/oc_p9_Billed-app-FR-Front/src/constants/usersTest.js">
-        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      </file>
-    </package>
+<coverage generated="1745938373959" clover="3.2.0">
+  <project timestamp="1745938373959" name="All files">
+    <metrics statements="224" coveredstatements="209" conditionals="95" coveredconditionals="79" methods="68" coveredmethods="55" elements="387" coveredelements="343" complexity="0" loc="224" ncloc="224" packages="2" files="14" classes="14"/>
     <package name="containers">
       <metrics statements="192" coveredstatements="178" conditionals="61" coveredconditionals="46" methods="53" coveredmethods="40"/>
       <file name="Bills.js" path="/Users/sedomu/Documents/formation OC dev frontend/projet 9/oc_p9_Billed-app-FR-Front/src/containers/Bills.js">
