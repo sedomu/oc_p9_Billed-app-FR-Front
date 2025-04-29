@@ -38,7 +38,7 @@ jobs:
         with:
           # Upload jest coverage only
           path: '.'
-          working-drectory: "./coverage/lcov-report/"
+          working-directory: "./coverage/lcov-report/"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
